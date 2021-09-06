@@ -5,8 +5,6 @@ apply plugin: 'maven'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation gradleApi()//gradle sdk
-    implementation localGroovy()//groovy sdk
     implementation 'com.android.tools.build:gradle:4.0.1'
     implementation 'com.android.tools.build:transform-api:1.5.0'
     implementation group: 'org.ow2.asm', name: 'asm', version: '8.0.1'
@@ -15,36 +13,23 @@ dependencies {
     implementation ('org.jacoco:org.jacoco.report:0.8.5'){
         exclude group: 'org.jacoco', module: 'org.jacoco.core'
     }
-    implementation project(path: ':jacoco-core')
-//    implementation "com.github.ttpai.AndJacoco:jacoco-core:0.0.5"
 
+    implementation project(path: ':jacoco-core')
+    //implementation "com.github.ttpai.AndJacoco:jacoco-core:0.0.6"
+
+    implementation gradleApi()//gradle sdk
+    implementation localGroovy()//groovy sdk
 }
 
 repositories {
-    jcenter()
+    //jcenter()
+    mavenLocal()
 }
 
 sourceCompatibility = "1.8"
 targetCompatibility = "1.8"
 
-/*uploadArchives {
-    repositories.mavenDeployer {
-        repository(url: uri('../repo'))
-        pom.groupId = 'site.duqian.plugin'//包名
-        pom.artifactId = 'JacocoPlugin'//在需要引用插件时用到
-        pom.version = '1.0.0'
-    }
-}*/
-uploadArchives {
-    repositories.mavenDeployer {
-        repository(url: uri('../repo'))
-        pom.groupId = 'com.github.ttpai.AndJacoco'//包名
-        pom.artifactId = 'plugin'//在需要引用插件时用到
-        pom.version = '0.0.6'
-    }
-}
-
-/*group='com.github.ttpai.AndJacoco'
+group = 'com.github.ttpai.AndJacoco'
 version = '0.0.6'
 //gradlew uploadArchives
 
@@ -52,12 +37,21 @@ uploadArchives {
     repositories {
         flatDir {
             name "localRepository"
-            dir "../app/localRepository/libs"
+            dir "../repo/libs"
         }
     }
+}
 
-    println "Root project:   ${project.rootProject}";
-    println  "  rootDir:      ${project.rootDir}"
-    println  "  projectDir:   ${project.projectDir}";
-    println  "  project dir:  ${System.getProperty("user.dir")}";
+
+/*uploadArchives {
+    flatDir {
+        name "localRepository"
+        dir "../repo/libs"
+    }
+    repositories.mavenDeployer {
+        //repository(url: uri('../repo'))
+        pom.groupId = 'com.github.ttpai.AndJacoco'//包名
+        pom.artifactId = 'plugin'//在需要引用插件时用到
+        pom.version = '0.0.6'
+    }
 }*/

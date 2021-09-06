@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.ttp.and_jacoco'
-//apply plugin: 'site.duqian.JacocoPlugin'
 
 //代码覆盖配置
 jacocoCoverageConfig {
@@ -88,7 +87,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     implementation project(path: ':rt')
-    androidTestImplementation project(path: ':jacoco-core')
+    //implementation project(path: ':jacoco-core')
 
     implementation('org.jacoco:org.jacoco.report:0.8.5') {
         exclude group: 'org.jacoco', module: 'org.jacoco.core'
