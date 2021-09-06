@@ -17,7 +17,7 @@ class BranchDiffTask extends DefaultTask {
 
     @TaskAction
     def getDiffClass() {
-        println "downloadEcData start"
+        println "downloadEcData start local dq"
         downloadEcData()
         println "downloadEcData end"
 

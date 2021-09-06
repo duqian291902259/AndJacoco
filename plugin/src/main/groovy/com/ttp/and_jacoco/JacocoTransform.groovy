@@ -218,7 +218,7 @@ class JacocoTransform extends Transform {
     }
 
     def gitPush(String shell, String commitMsg) {
-        println("jacoco 执行git命令")
+        println("jacoco 执行git命令 local dq")
 //
         String[] cmds
         if (Utils.windows) {
