@@ -2,6 +2,9 @@
 buildscript {
     ext.kotlin_version = "1.3.72"
     repositories {
+        maven {
+            url uri('./repo')
+        }
         maven { url 'https://jitpack.io' }
 
         google()
@@ -9,29 +12,31 @@ buildscript {
        // maven { url "http://172.16.2.101:8081/nexus/content/repositories/com.ttpai/" }
        // maven { url "https://oss.sonatype.org/content/repositories/snapshots/"}
 
-        flatDir {
+        /*flatDir {
             name 'localRepository'
             dir "app/localRepository/libs"
-        }
+        }*/
     }
     dependencies {
 
-        classpath(group: 'com.github.ttpai.AndJacoco', name: 'plugin', version: '0.0.6') {
+        /*classpath(group: 'com.github.ttpai.AndJacoco', name: 'plugin', version: '0.0.6') {
             changing = true
-        }
-
+        }*/
         classpath "com.android.tools.build:gradle:4.0.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        //classpath 'com.github.ttpai.AndJacoco:plugin:0.0.6'
+
+        classpath 'com.github.ttpai.AndJacoco:plugin:0.0.6'
+        //classpath 'site.duqian.plugin:JacocoPlugin:1.0.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 
 allprojects {
     repositories {
+        maven {
+            url uri('./repo')
+        }
         maven { url 'https://jitpack.io' }
         google()
         jcenter()
@@ -39,10 +44,10 @@ allprojects {
         //maven { url "https://oss.sonatype.org/content/repositories/snapshots/"}
 
 
-        mavenLocal()
+        /*mavenLocal()
         maven {
             url uri('app/localRepository/libs')
-        }
+        }*/
     }
 }
 

@@ -20,11 +20,31 @@ dependencies {
 
 }
 
+repositories {
+    jcenter()
+}
+
 sourceCompatibility = "1.8"
 targetCompatibility = "1.8"
 
-group='com.github.ttpai.AndJacoco'
-//name ="plugin"
+/*uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: uri('../repo'))
+        pom.groupId = 'site.duqian.plugin'//包名
+        pom.artifactId = 'JacocoPlugin'//在需要引用插件时用到
+        pom.version = '1.0.0'
+    }
+}*/
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: uri('../repo'))
+        pom.groupId = 'com.github.ttpai.AndJacoco'//包名
+        pom.artifactId = 'plugin'//在需要引用插件时用到
+        pom.version = '0.0.6'
+    }
+}
+
+/*group='com.github.ttpai.AndJacoco'
 version = '0.0.6'
 //gradlew uploadArchives
 
@@ -40,4 +60,4 @@ uploadArchives {
     println  "  rootDir:      ${project.rootDir}"
     println  "  projectDir:   ${project.projectDir}";
     println  "  project dir:  ${System.getProperty("user.dir")}";
-}
+}*/

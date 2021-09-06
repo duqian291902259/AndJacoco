@@ -86,3 +86,7 @@ lint/tmp/
 # lint/reports/
 /app/build/
 /jacoco-core/build/
+
+repo
+repo/
+/repo/*
