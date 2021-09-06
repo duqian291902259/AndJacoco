@@ -247,6 +247,10 @@ class JacocoTransform extends Transform {
         if (fileInput.isDirectory()) {
             return fileInputName
         }
+        File parentFile = locate.getParentFile();
+        if (parentFile==null) {
+            return ""
+        }
         final String parentDirPath = fileInput.getParentFile().getAbsolutePath()
         final String pathMD5 = Util.MD5(parentDirPath)
         final int extSepPos = fileInputName.lastIndexOf('.')

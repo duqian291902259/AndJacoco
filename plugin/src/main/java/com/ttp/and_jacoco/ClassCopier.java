@@ -26,8 +26,9 @@ public class ClassCopier extends ClassProcessor {
         if (shouldIncludeClass(entryName)) {
             //记录第三方moudle的class
             File file = new File(classDir + File.separator + entryName);
-            if (!file.getParentFile().exists()) {
-                file.getParentFile().mkdirs();
+            File parentFile = file.getParentFile();
+            if (parentFile != null && !parentFile.exists()) {
+                parentFile.mkdirs();
             }
             FileOutputStream outputStream = new FileOutputStream(file);
             copy(zipFile.getInputStream(entryIn), outputStream);
@@ -37,8 +38,9 @@ public class ClassCopier extends ClassProcessor {
     @Override
     void processClass(File fileIn, File fileOut) throws IOException {
         if (shouldIncludeClass(fileIn)) {
-            if (!fileOut.getParentFile().exists()) {
-                fileOut.getParentFile().mkdirs();
+            File parentFile = fileOut.getParentFile();
+            if (parentFile != null && !parentFile.exists()) {
+                parentFile.mkdirs();
             }
             FileUtils.copyFile(fileIn, fileOut);
         }

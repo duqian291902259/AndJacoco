@@ -23,7 +23,8 @@ dependencies {
 sourceCompatibility = "1.8"
 targetCompatibility = "1.8"
 
-group='com.github.ttpai'
+group='com.github.ttpai.AndJacoco'
+//name ="plugin"
 version = '0.0.6'
 //gradlew uploadArchives
 
@@ -34,4 +35,9 @@ uploadArchives {
             dir "../app/localRepository/libs"
         }
     }
+
+    println "Root project:   ${project.rootProject}";
+    println  "  rootDir:      ${project.rootDir}"
+    println  "  projectDir:   ${project.projectDir}";
+    println  "  project dir:  ${System.getProperty("user.dir")}";
 }

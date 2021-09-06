@@ -90,7 +90,10 @@ public class JacocoApi extends HttpServlet {
         File locate = new File(dirPath, remoteFile.getName());
         System.out.println("save=" + locate.getAbsolutePath());
 
-        locate.getParentFile().mkdirs();//用于确保文件目录存在,如果为单级目录可以去掉
+        File parentFile = locate.getParentFile();
+        if (parentFile!=null) {
+            parentFile.mkdirs();//用于确保文件目录存在,如果为单级目录可以去掉
+        }
         locate.createNewFile(); //创建新文件
 
         InputStream ins = fileItem.getInputStream();   //FileItem的内容

@@ -192,15 +192,17 @@ public class ReportGenerator {
      * @throws IOException
      */
     public static void main(final String[] args) throws IOException {
-        File exec = new File("/Users/wzh/ttpc/gitlab/Dealer-Android-Rebuild/app/build/outputs/coverage");
+        // TODO-dq: 2021/9/6 根目录
+        String rootDir ="E:\\OpenSource\\Jacoco_Plugins\\AndJacoco\\app";
+        File exec = new File(rootDir+"/build/outputs/coverage");
 
         List<File> sourceDirs = new ArrayList<>();
-        sourceDirs.add(new File("/Users/wzh/ttpc/gitlab/Dealer-Android-Rebuild/app/src/main/java"));
+        sourceDirs.add(new File(rootDir+"/src/main/java"));
 
         List<File> classDirs = new ArrayList<>();
-        classDirs.add(new File("/Users/wzh/ttpc/gitlab/Dealer-Android-Rebuild/app/classes"));
+        classDirs.add(new File(rootDir+"/classes"));
 
-        File reportDir = new File("/Users/wzh/ttpc/gitlab/Dealer-Android-Rebuild/app/build/report");
+        File reportDir = new File(rootDir+"/build/report");
         ReportGenerator generator = new ReportGenerator(exec.getAbsolutePath(), classDirs, sourceDirs, reportDir);
         generator.create();
     }

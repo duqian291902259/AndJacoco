@@ -6,8 +6,8 @@ buildscript {
 
         google()
         jcenter()
-        maven { url "http://172.16.2.101:8081/nexus/content/repositories/com.ttpai/" }
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/"}
+       // maven { url "http://172.16.2.101:8081/nexus/content/repositories/com.ttpai/" }
+       // maven { url "https://oss.sonatype.org/content/repositories/snapshots/"}
 
         flatDir {
             name 'localRepository'
@@ -16,7 +16,7 @@ buildscript {
     }
     dependencies {
 
-        classpath(group: 'com.github.ttpai', name: 'AndJacoco', version: '0.0.6') {
+        classpath(group: 'com.github.ttpai.AndJacoco', name: 'plugin', version: '0.0.6') {
             changing = true
         }
 
@@ -36,7 +36,7 @@ allprojects {
         google()
         jcenter()
 
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/"}
+        //maven { url "https://oss.sonatype.org/content/repositories/snapshots/"}
 
 
         mavenLocal()

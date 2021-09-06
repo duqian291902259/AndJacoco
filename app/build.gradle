@@ -2,10 +2,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.ttp.and_jacoco'
+//apply plugin: 'com.ttp.and_jacoco.JacocoPlugin'
 
 //代码覆盖配置
 jacocoCoverageConfig {
-    jacocoEnable true //开关
+    jacocoEnable false //开关
     branchName 'main'//要对比的分支名
     host="http://10.10.17.105:8080"//下载服务host
     execDir "${project.buildDir.absolutePath}/outputs/coverage"//ec 下载存放路径
@@ -15,7 +16,7 @@ jacocoCoverageConfig {
     copyClassShell="${project.projectDir}/shell/pullDiffClass.sh" //copy classes 命令
     includes = ['com.andjacoco.demo'] //要 包含的class 包名
     excludeClass = { // return true 表示要排除的class
-//        println("exclude it=${it}")
+        println("excludeClass it=${it}")
         return false
     }
     excludeMethod = {//return true 表示要排除此方法
@@ -54,7 +55,6 @@ android {
 
         debug{
             buildConfigField "String", "host", "\"${jacocoCoverageConfig.host}\""
-
         }
     }
 }
@@ -82,17 +82,19 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'com.squareup.okhttp3:okhttp:3.14.9'
-//    implementation project(path: ':rt')
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation project(path: ':rt')
     androidTestImplementation project(path: ':jacoco-core')
 
     implementation('org.jacoco:org.jacoco.report:0.8.5') {
         exclude group: 'org.jacoco', module: 'org.jacoco.core'
     }
 
-    debugImplementation "com.github.ttpai.AndJacoco:rt:0.0.6"
-    releaseImplementation "com.github.ttpai.AndJacoco:rt-no-op:0.0.6"
+    //debugImplementation "com.github.ttpai.AndJacoco:rt:0.0.6"
+    //releaseImplementation "com.github.ttpai.AndJacoco:rt-no-op:0.0.6"
 
 }

@@ -19,6 +19,5 @@ public class BaseActivity extends AppCompatActivity {
         super.onDestroy();
         Log.d("TAG","BaseActivity onDestroy");
         CodeCoverageManager.generateCoverageFile();
-
     }
 }
