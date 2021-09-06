@@ -46,12 +46,20 @@ class JacocoExtension {
             String[] paths = path.split('\n')
             String temp = ''
             paths.each {
-                File file = new File(it)
-                File gitBash = new File(file.getParentFile().getParent() + File.separator + 'git-bash.exe')
-                println("GitBashPath:$gitBash exist:${gitBash.exists()}")
-                if (gitBash.exists()) {
-                    temp = gitBash.absolutePath
-                    return temp
+                try {
+                    File file = new File(it)
+                    def parentFile = file.getParentFile()
+                    if (parentFile != null) {
+                        println("GitBashPath:$parentFile exist:${parentFile.exists()}")
+                        File gitBash = new File(parentFile.getParent() + File.separator + 'git-bash.exe')
+                        println("GitBashPath:$gitBash exist:${gitBash.exists()}")
+                        if (gitBash.exists()) {
+                            temp = gitBash.absolutePath
+                            return temp
+                        }
+                    }
+                } catch (Exception e) {
+                    println("GitBashPath:$e")
                 }
             }
             return temp

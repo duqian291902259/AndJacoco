@@ -8,11 +8,21 @@ buildscript {
         jcenter()
         maven { url "http://172.16.2.101:8081/nexus/content/repositories/com.ttpai/" }
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/"}
+
+        flatDir {
+            name 'localRepository'
+            dir "app/localRepository/libs"
+        }
     }
     dependencies {
+
+        classpath(group: 'com.github.ttpai', name: 'AndJacoco', version: '0.0.6') {
+            changing = true
+        }
+
         classpath "com.android.tools.build:gradle:4.0.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.github.ttpai.AndJacoco:plugin:0.0.6'
+        //classpath 'com.github.ttpai.AndJacoco:plugin:0.0.6'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -28,6 +38,11 @@ allprojects {
 
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/"}
 
+
+        mavenLocal()
+        maven {
+            url uri('app/localRepository/libs')
+        }
     }
 }
 
