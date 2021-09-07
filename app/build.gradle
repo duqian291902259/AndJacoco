@@ -1,7 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.ttp.and_jacoco'
+//apply plugin: 'com.ttp.and_jacoco'
+apply plugin: 'site.duqian.jacoco'
 
 //代码覆盖配置
 jacocoCoverageConfig {

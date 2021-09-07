@@ -4,12 +4,12 @@ buildscript {
     repositories {
         flatDir {
             name "localRepository"
-            dir "../repo/libs"
+            dir "repo/libs"
         }
         /*maven {
             url uri('./repo')
         }*/
-        maven { url 'https://jitpack.io' }
+        //maven { url 'https://jitpack.io' }
 
         google()
         jcenter()
@@ -34,12 +34,12 @@ allprojects {
     repositories {
         flatDir {
             name "localRepository"
-            dir "../repo/libs"
+            dir "repo/libs"
         }
         /*maven {
             url uri('./repo')
         }*/
-        maven { url 'https://jitpack.io' }
+        //maven { url 'https://jitpack.io' }
         google()
         jcenter()
         //maven { url "https://oss.sonatype.org/content/repositories/snapshots/"}
