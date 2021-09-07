@@ -8,12 +8,19 @@ apply plugin: 'site.duqian.jacoco'
 jacocoCoverageConfig {
     jacocoEnable true //开关
     branchName 'main'//要对比的分支名
-    host="http://localhost:8080"//下载服务host
+    host = "http://localhost:8080"//下载服务host
     execDir "${project.buildDir.absolutePath}/outputs/coverage"//ec 下载存放路径
     sourceDirectories = getAllJavaDir() //源码路径
-    classDirectories = ["${rootProject.projectDir.absolutePath}/app/classes"] //classes 路径
-    gitPushShell="${project.projectDir}/shell/gitPushShell.sh" //提交git 命令
-    copyClassShell="${project.projectDir}/shell/pullDiffClass.sh" //copy classes 命令
+    //classDirectories = ["${rootProject.projectDir.absolutePath}/app/classes"] //classes 路径
+
+    //class文件路径
+    classDirectories = [
+            "$buildDir/intermediates/javac/debug/classes",
+            "$buildDir/tmp/kotlin-classes/debug",
+    ]
+
+    gitPushShell = "${project.projectDir}/shell/gitPushShell.sh" //提交git 命令
+    copyClassShell = "${project.projectDir}/shell/pullDiffClass.sh" //copy classes 命令
     includes = ['com.andjacoco.demo'] //要 包含的class 包名
     excludeClass = { // return true 表示要排除的class
         println("excludeClass it=${it}")
