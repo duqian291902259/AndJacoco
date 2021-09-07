@@ -28,6 +28,6 @@ git commit -m "$1"
 echo "start push --"
 git push origin $gitBran $oriBran
 echo "start push again--"
-git push origin $gitBran:$oriBran
-
+#git push origin $gitBran:$oriBran
+git push --set-upstream origin $oriBran
 echo "end push --"
