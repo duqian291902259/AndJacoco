@@ -54,8 +54,7 @@ public class CodeCoverageManager {
         filePath = dirPath + UUID.randomUUID().toString() + "_" + System.currentTimeMillis() + ".ec";
 
         File f = new File(filePath);
-        Log.d(TAG, filePath + " canRead=" + f.canRead() + " canWrite=" + f.canWrite());
-
+        Log.d(TAG, filePath + " canRead=" + f.canRead() + " canWrite=" + f.canWrite()+",size="+f.length()+"exist="+f.exists());
     }
 
     public static void generateCoverageFile() {
