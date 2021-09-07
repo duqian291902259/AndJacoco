@@ -10,12 +10,14 @@ dependencies {
     implementation group: 'org.ow2.asm', name: 'asm', version: '8.0.1'
     implementation group: 'org.ow2.asm', name: 'asm-commons', version: '8.0.1'
     implementation group: 'org.ow2.asm', name: 'asm-tree', version: '8.0.1'
-    implementation ('org.jacoco:org.jacoco.report:0.8.5'){
-        exclude group: 'org.jacoco', module: 'org.jacoco.core'
-    }
 
     implementation project(path: ':jacoco-core')
     //implementation "com.github.ttpai.AndJacoco:jacoco-core:0.0.6"
+
+    implementation ('org.jacoco:org.jacoco.report:0.8.5'){
+        exclude group: 'org.jacoco', module: 'org.jacoco.core'
+    }
+    
     implementation gradleApi()//gradle sdk
     implementation localGroovy()//groovy sdk
 }
