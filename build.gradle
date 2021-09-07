@@ -15,9 +15,9 @@ buildscript {
     }
     dependencies {
 
-        classpath(group: 'com.github.ttpai.AndJacoco', name: 'plugin', version: '0.0.6') {
+        /*classpath(group: 'com.github.ttpai.AndJacoco', name: 'plugin', version: '0.0.6') {
             changing = true
-        }
+        }*/
         classpath "com.android.tools.build:gradle:4.0.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
