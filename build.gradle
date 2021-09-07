@@ -23,10 +23,8 @@ buildscript {
 
         classpath 'com.github.ttpai.AndJacoco:plugin:0.0.6'
         classpath 'com.github.ttpai.AndJacoco:jacoco-core:0.0.6'
-        classpath("org.jacoco:org.jacoco.ant:0.8.5")
-        //classpath 'com.github.ttpai.AndJacoco:rt:0.0.6'
-        //classpath 'com.github.ttpai.AndJacoco:rt-no-op:0.0.6'
-
+        //classpath("org.jacoco:org.jacoco.ant:0.8.5")
+        classpath 'org.jacoco:org.jacoco.report:0.8.5'
         //classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
