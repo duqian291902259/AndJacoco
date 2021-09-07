@@ -193,17 +193,27 @@ public class ReportGenerator {
      */
     public static void main(final String[] args) throws IOException {
         // TODO-dq: 2021/9/6 根目录
-        String rootDir ="E:\\OpenSource\\Jacoco_Plugins\\AndJacoco\\app";
+        String rootDir ="E:/OpenSource/Jacoco_Plugins/AndJacoco/app";
         File exec = new File(rootDir+"/build/outputs/coverage");
 
         List<File> sourceDirs = new ArrayList<>();
         sourceDirs.add(new File(rootDir+"/src/main/java"));
 
         List<File> classDirs = new ArrayList<>();
-        classDirs.add(new File(rootDir+"/classes"));
+        //classDirs.add(new File(rootDir+"/classes"));
+        String classPath1 = rootDir + "/build/intermediates/javac/debug/classes";
+        classDirs.add(new File(classPath1));
+        String classPath2 = rootDir + "/build/tmp/kotlin-classes/debug";
+        classDirs.add(new File(classPath2));
 
         File reportDir = new File(rootDir+"/build/report");
-        ReportGenerator generator = new ReportGenerator(exec.getAbsolutePath(), classDirs, sourceDirs, reportDir);
+
+        String execDir = exec.getAbsolutePath();
+        System.out.println("execDir="+execDir);
+        System.out.println("classDirs="+classDirs.get(0));
+        System.out.println("sourceDirs="+sourceDirs.get(0));
+        System.out.println("reportDir="+reportDir);
+        ReportGenerator generator = new ReportGenerator(execDir, classDirs, sourceDirs, reportDir);
         generator.create();
     }
 
