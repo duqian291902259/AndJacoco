@@ -1,7 +1,17 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven'
 //apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.ttpai'
+//group='com.github.ttpai'
+group = 'com.github.ttpai.AndJacoco'
+version = '0.0.6'
+uploadArchives {
+    repositories {
+        flatDir {
+            name "localRepository"
+            dir "../repo/libs"
+        }
+    }
+}
 
 android {
     compileSdkVersion 29
