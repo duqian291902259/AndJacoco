@@ -7,7 +7,7 @@ apply plugin: 'com.ttp.and_jacoco'
 jacocoCoverageConfig {
     jacocoEnable true //开关
     branchName 'main'//要对比的分支名
-    host="http://10.10.17.105:8080"//下载服务host
+    host="http://localhost:8080"//下载服务host
     execDir "${project.buildDir.absolutePath}/outputs/coverage"//ec 下载存放路径
     sourceDirectories = getAllJavaDir() //源码路径
     classDirectories = ["${rootProject.projectDir.absolutePath}/app/classes"] //classes 路径

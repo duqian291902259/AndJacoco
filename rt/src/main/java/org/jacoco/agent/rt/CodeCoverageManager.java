@@ -29,7 +29,8 @@ import okhttp3.Response;
  */
 public class CodeCoverageManager {
     private static CodeCoverageManager sInstance=new CodeCoverageManager();
-    private static String URL_HOST = "http://10.10.17.105:8080";//内网 服务器地址
+    //private static String URL_HOST = "http://10.10.17.105:8080";//内网 服务器地址
+    private static String URL_HOST = "http://localhost:8080";//内网 服务器地址
 
     private static String APP_NAME;
     private static int versionCode;
