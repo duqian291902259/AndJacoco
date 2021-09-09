@@ -177,11 +177,8 @@ public class CodeCoverageManager {
                         try {
                             //获取请求结果 ResponseBody
                             responseBody = response.body();
-                            //获取字符串
-                            final String info = responseBody.string();
-
-                            String str = response.body().string();
-                            Log.d(TAG, " succ =" + str + ",info=" + info);
+                            String str = responseBody.string();
+                            Log.d(TAG, " succ =" + str);
                             if (response.isSuccessful()) {
                                 if (str.contains("200")) {
                                     f.delete();
