@@ -14,6 +14,12 @@ public class BaseActivity extends AppCompatActivity {
         Log.d("TAG", "BaseActivity onDestroy");
         CodeCoverageManager.generateCoverageFile();
 
+       // CCJacocoHelper.INSTANCE.generateEcFile(getApplicationContext(), true);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
         CCJacocoHelper.INSTANCE.generateEcFile(getApplicationContext(), true);
     }
 }
