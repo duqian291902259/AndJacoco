@@ -41,16 +41,21 @@ public class CodeCoverageManager {
     private static final String TAG = "CodeCoverageManager";
 
     public static void init(Context context, String serverHost) {
-        String path = context.getFilesDir().getAbsolutePath();
         APP_NAME = context.getPackageName().replace(".", "");
         versionCode = getVersion(context);
-        if (serverHost != null)
+        if (serverHost != null) {
             URL_HOST = serverHost;
-
-        dirPath = path + "/jacoco/" + versionCode + "/";
+        }
+        //String path = context.getFilesDir().getAbsolutePath();
+        //dirPath = path + "/jacoco/" + versionCode + "/";
+        dirPath = context.getExternalCacheDir() + File.separator + "jacoco/";
         File dir = new File(dirPath);
-        if (!dir.exists()) dir.mkdirs();
-        filePath = dirPath + UUID.randomUUID().toString() + "_" + System.currentTimeMillis() + ".ec";
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        //非append的方式：
+        // filePath = dirPath + UUID.randomUUID().toString() + "_" + System.currentTimeMillis() + ".ec";
+        filePath = dirPath + "test_android_jacoco.ec";
 
         File f = new File(filePath);
         Log.d(TAG, filePath + " canRead=" + f.canRead() + " canWrite=" + f.canWrite() + ",size=" + f.length() + "exist=" + f.exists());
@@ -82,11 +87,10 @@ public class CodeCoverageManager {
      * 生成executionData
      */
     private void writeToFile() {
-
         if (filePath == null) return;
         OutputStream out = null;
         try {
-            out = new FileOutputStream(filePath, false);
+            out = new FileOutputStream(filePath, true);
             IAgent agent = RT.getAgent();
             out.write(agent.getExecutionData(false));
             Log.i(TAG, " generateCoverageFile write success");
