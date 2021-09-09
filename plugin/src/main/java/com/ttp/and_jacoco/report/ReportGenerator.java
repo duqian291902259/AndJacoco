@@ -139,7 +139,7 @@ public class ReportGenerator {
                 loader.load(inputFile);
             } catch (final IOException e) {
                 throw new RuntimeException("Unable to read "
-                        + inputFile.getAbsolutePath(), e);
+                        + inputFile.getAbsolutePath()+",e="+e);
             }
         }
     }
