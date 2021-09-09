@@ -178,7 +178,7 @@ public class CodeCoverageManager {
                             //获取请求结果 ResponseBody
                             responseBody = response.body();
                             String str = responseBody.string();
-                            Log.d(TAG, " succ =" + str);
+                            Log.e(TAG, "syncUploadFiles str =" + str);
                             if (response.isSuccessful()) {
                                 if (str.contains("200")) {
                                     f.delete();
