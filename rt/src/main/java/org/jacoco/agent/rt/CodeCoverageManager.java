@@ -136,18 +136,24 @@ public class CodeCoverageManager {
             Log.d(TAG, "File list=" + Arrays.toString(dir.list()));
             File[] files = dir.listFiles();
             for (File f : files) {
-                if (!f.getName().endsWith(".ec") || f.length() <= 0) continue;
+                String filename = f.getName();
+                if (!filename.endsWith(".ec") || f.length() <= 0) {
+                    continue;
+                }
 
-                //RequestBody fileBody = RequestBody.create(MediaType.get("application/plain"), f);
-                RequestBody fileBody = RequestBody.create(MediaType.get("multipart/form-data"), f);
+                RequestBody fileBody = RequestBody.create(MediaType.parse("application/plain"), f);
+                //RequestBody fileBody = RequestBody.create(MediaType.get("multipart/form-data"), f);
                 RequestBody body = new MultipartBody.Builder()
-                        .addFormDataPart("file", f.getName(), fileBody)
+                        .addFormDataPart("file", filename, fileBody)
                         .addFormDataPart("appName", "cc-android")
                         .addFormDataPart("versionCode", "3.8.1")
                         .build();
 
+                String url = URL_HOST + "/WebServer/JacocoApi/uploadEcFile";
+                Log.e(TAG, "upload url =" + url + ",file=" + f.getAbsolutePath());
+
                 Response response = client.newCall(new Request.Builder()
-                        .url(URL_HOST + "/WebServer/JacocoApi/uploadEcFile")
+                        .url(url)
                         .post(body)
                         .build()).execute();
                 if (response.isSuccessful()) {
