@@ -143,8 +143,8 @@ public class CodeCoverageManager {
                 RequestBody fileBody = RequestBody.create(MediaType.get("application/plain"), f);
                 RequestBody body = new MultipartBody.Builder()
                         .addFormDataPart("file", f.getName(), fileBody)
-                        .addFormDataPart("appName", APP_NAME)
-                        .addFormDataPart("versionCode", "" + versionCode)
+                        .addFormDataPart("appName", "cc-android")
+                        .addFormDataPart("versionCode", "3.8.1")
                         .build();
 
                 Response response = client.newCall(new Request.Builder()
