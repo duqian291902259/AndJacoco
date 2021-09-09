@@ -27,7 +27,7 @@ object CCJacocoHelper {
      * @param isNew 是否重新创建ec文件
      */
     fun generateEcFile(context: Context, isNew: Boolean) {
-        ThreadUtil.runOnThread {
+       // ThreadUtil.runOnThread {
             var out: OutputStream? = null
             //todo-dq 按照时间戳命名?
             val fileName = "cc_jacoco_${System.currentTimeMillis()}.ec"
@@ -67,6 +67,6 @@ object CCJacocoHelper {
                 } catch (e: Exception) {
                 }
             }
-        }
+       // }
     }
 }
