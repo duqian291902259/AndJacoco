@@ -138,7 +138,8 @@ public class CodeCoverageManager {
             for (File f : files) {
                 if (!f.getName().endsWith(".ec") || f.length() <= 0) continue;
 
-                RequestBody fileBody = RequestBody.create(MediaType.get("application/plain"), f);
+                //RequestBody fileBody = RequestBody.create(MediaType.get("application/plain"), f);
+                RequestBody fileBody = RequestBody.create(MediaType.get("multipart/form-data"), f);
                 RequestBody body = new MultipartBody.Builder()
                         .addFormDataPart("file", f.getName(), fileBody)
                         .addFormDataPart("appName", "cc-android")
