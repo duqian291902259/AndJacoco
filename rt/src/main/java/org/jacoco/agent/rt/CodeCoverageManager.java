@@ -14,12 +14,15 @@ import java.util.Arrays;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 /**
  * FileName: CodeCoverageManager
@@ -156,19 +159,46 @@ public class CodeCoverageManager {
                 String url = URL_HOST + "/WebServer/JacocoApi/uploadEcFile";
                 Log.e(TAG, "upload url =" + url + ",file=" + f.getAbsolutePath());
 
-                Response response = client.newCall(new Request.Builder()
+                Request request = new Request.Builder()
                         .url(url)
                         .post(body)
-                        .build()).execute();
-                if (response.isSuccessful()) {
-                    String str = response.body().string();
-                    Log.d(TAG, " succ =" + str);
-                    if (str.contains("200")) {
-                        f.delete();
+                        .build();
+                Call call = client.newCall(request);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, final IOException e) {
+                        Log.e(TAG, "syncUploadFiles error =" + e);
                     }
-                } else {
-                    Log.e(TAG, " error =" + response.code());
-                }
+
+                    @Override
+                    public void onResponse(Call call, final Response response) throws IOException {
+                        //请求结果
+                        ResponseBody responseBody = null;
+                        try {
+                            //获取请求结果 ResponseBody
+                            responseBody = response.body();
+                            //获取字符串
+                            final String info = responseBody.string();
+
+                            String str = response.body().string();
+                            Log.d(TAG, " succ =" + str + ",info=" + info);
+                            if (response.isSuccessful()) {
+                                if (str.contains("200")) {
+                                    f.delete();
+                                }
+                            } else {
+                                Log.e(TAG, "syncUploadFiles error =" + response.code());
+                            }
+                        } catch (Exception e) {//发生异常，失败回调
+                            e.printStackTrace();
+                        } finally {//记得关闭操作
+                            if (null != responseBody) {
+                                responseBody.close();
+                            }
+                        }
+                    }
+                });
+                //Response response = newCall.execute();
             }
         }
 
