@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Environment
 import android.text.TextUtils
 import android.util.Log
-import com.andjacoco.demo.thread.ThreadUtil
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream

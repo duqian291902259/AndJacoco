@@ -97,7 +97,7 @@ dependencies {
     implementation project(path: ':rt')
     //implementation project(path: ':jacoco-core')//Type org.jacoco.core.JaCoCo is defined multiple times
 
-    implementation('org.jacoco:org.jacoco.report:0.8.5') {
+    implementation('org.jacoco:org.jacoco.report:0.8.7') {
         exclude group: 'org.jacoco', module: 'org.jacoco.core'
     }
 
