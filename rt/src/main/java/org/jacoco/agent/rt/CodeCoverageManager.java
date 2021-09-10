@@ -165,7 +165,7 @@ public class CodeCoverageManager {
                         .post(body)
                         .build();
                 Call call = client.newCall(request);
-                call.enqueue(new Callback() {
+                /*call.enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, final IOException e) {
                         Log.e(TAG, "syncUploadFiles error =" + e);
@@ -173,33 +173,38 @@ public class CodeCoverageManager {
 
                     @Override
                     public void onResponse(Call call, final Response response) throws IOException {
-                        //请求结果
-                        ResponseBody responseBody = null;
-                        try {
-                            //获取请求结果 ResponseBody
-                            responseBody = response.body();
-                            String str = responseBody.string();
-                            Log.e(TAG, "syncUploadFiles str =" + str);
-                            if (response.isSuccessful()) {
-                                if (str.contains("200")) {
-                                    f.delete();
-                                }
-                            } else {
-                                Log.e(TAG, "syncUploadFiles error =" + response.code());
-                            }
-                        } catch (Exception e) {//发生异常，失败回调
-                            e.printStackTrace();
-                        } finally {//记得关闭操作
-                            if (null != responseBody) {
-                                responseBody.close();
-                            }
-                        }
+                        handleResponse(response,f);
                     }
-                });
-                //Response response = newCall.execute();
+                });*/
+                Response response = call.execute();
+                handleResponse(response, f);
             }
         }
 
+    }
+
+    private void handleResponse(Response response, File f) {
+        //请求结果
+        ResponseBody responseBody = null;
+        try {
+            //获取请求结果 ResponseBody
+            responseBody = response.body();
+            String str = responseBody.string();
+            Log.e(TAG, "syncUploadFiles str =" + str);
+            if (response.isSuccessful()) {
+                if (str.contains("200")) {
+                    f.delete();
+                }
+            } else {
+                Log.e(TAG, "syncUploadFiles error =" + response.code());
+            }
+        } catch (Exception e) {//发生异常，失败回调
+            e.printStackTrace();
+        } finally {//记得关闭操作
+            if (null != responseBody) {
+                responseBody.close();
+            }
+        }
     }
 
     private OkHttpClient buildHttpClient() {
