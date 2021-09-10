@@ -151,6 +151,7 @@ public class CodeCoverageManager {
                 RequestBody fileBody = RequestBody.create(MediaType.parse("application/plain"), f);
                 //RequestBody fileBody = RequestBody.create(MediaType.get("multipart/form-data"), f);
                 RequestBody body = new MultipartBody.Builder()
+                        .setType(MultipartBody.FORM)
                         .addFormDataPart("file", filename, fileBody)
                         .addFormDataPart("appName", "cc-android")
                         .addFormDataPart("versionCode", "3.8.1")
