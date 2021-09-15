@@ -43,8 +43,8 @@ class BranchDiffTask extends DefaultTask {
 
     def pullDiffClasses() {
         currentName = "git name-rev --name-only HEAD".execute().text.replaceAll("\n", "")
-        if(currentName.contains("/")){
-            currentName=currentName.substring(currentName.lastIndexOf("/")+1)
+        if (currentName.contains("/")) {
+            currentName = currentName.substring(currentName.lastIndexOf("/") + 1)
         }
 
         println "currentName:\n" + currentName
@@ -275,21 +275,42 @@ class BranchDiffTask extends DefaultTask {
         if (paths != null && paths.size() > 0) {
             for (String path : paths) {
                 path = path.replace("\"", '')
-                def name = path.substring(path.lastIndexOf("/") + 1)
-                println "${path}"
+                //def name = path.substring(path.lastIndexOf("/") + 1)
+                def name = getOneParameter(path, "fileName")
+                println "下载executionData name=${name}"
                 def file = new File(dataDir, name)
-                if (file.exists() && file.length() > 0) //存在
-                    continue
-                println "downloadFile ${host}${path}"
-                println "execute curl -o ${file.getAbsolutePath()} ${host}${path}"
-
-                "curl -o ${file.getAbsolutePath()} ${host}${path}".execute().text
+                if (file.exists() && file.length() > 0) {//存在
+                    file.delete()
+                }
+                println "start downloadFile：execute curl -o ${file.getAbsolutePath()} ${host}/download?path=${path}"
+                "curl -o ${file.getAbsolutePath()} ${host}/download?path=${path}".execute().text
             }
         }
         println "downloadData 下载完成"
 
     }
 
+    private static String getOneParameter(String url, String keyWord) {
+        String retValue = "";
+        try {
+            final String charset = "utf-8"
+            url = URLDecoder.decode(url, charset)
+            String[] keyValues = url.split("&")
+            for (int i = 0; i < keyValues.length; i++) {
+                int index = keyValues[i].indexOf("=")
+                if (index <= 0) {
+                    continue
+                }
+                String key = keyValues[i].substring(0, index)
+                if (key.equals(keyWord)) {
+                    retValue = keyValues[i].substring(index + 1)
+                }
+            }
+        } catch (Exception e) {
+
+        }
+        return retValue
+    }
 
     boolean deleteEmptyDir(File dir) {
         if (dir.isDirectory()) {

@@ -41,7 +41,7 @@ public class CodeCoverageManager {
     private static String dirPath;
     private static String filePath;
 
-    private static final String TAG = "CodeCoverageManager";
+    private static final String TAG = "dq-jacoco-CodeCoverageManager";
 
     public static void init(Context context, String serverHost) {
         APP_NAME = context.getPackageName().replace(".", "");
