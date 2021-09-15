@@ -14,14 +14,14 @@ class JacocoPlugin implements Plugin<Project> {
     void apply(Project project) {
         JacocoExtension jacocoExtension = project.extensions.create("jacocoCoverageConfig", JacocoExtension)
 
-        project.configurations.all { configuration ->
+        /*project.configurations.all { configuration ->
             def name = configuration.name
             if (name != "implementation" && name != "compile") {
                 return
             }
             //为Project加入agent依赖
-//            configuration.dependencies.add(project.dependencies.create('com.ttp.jacoco:rt:0.0.5'))
-        }
+            //configuration.dependencies.add(project.dependencies.create('com.ttp.jacoco:rt:0.0.5'))
+        }*/
 
         def android = project.extensions.android
 

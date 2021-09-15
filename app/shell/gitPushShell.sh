@@ -13,7 +13,7 @@ git stash
 
 echo "start checkout--"
 git checkout -b $gitBran $oriBran
-git checkout -f $gitBran #强制切换分支，会丢失工作区的修改
+#git checkout -f $gitBran #强制切换分支，会丢失工作区的修改
 
 git pull
 

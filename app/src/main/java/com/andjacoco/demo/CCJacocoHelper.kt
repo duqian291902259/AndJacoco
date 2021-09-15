@@ -29,8 +29,8 @@ object CCJacocoHelper {
         // ThreadUtil.runOnThread {
         var out: OutputStream? = null
         //todo-dq 按照时间戳命名?
-        //val fileName = "cc_jacoco_${System.currentTimeMillis()}.ec"
-        val fileName = "cc_jacoco_test.ec"
+        //val fileName = "jacoco_test_${System.currentTimeMillis()}.ec"
+        val fileName = "jacoco_test.ec"
         var rootDir = context.externalCacheDir?.absolutePath + File.separator+"jacoco/"
         if (TextUtils.isEmpty(rootDir)) {
             rootDir = DEFAULT_COVERAGE_ROOT_DIR;

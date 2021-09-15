@@ -11,7 +11,7 @@ echo "outDir=$outDir"
 
 echo "start checkout--"
 git checkout -b $gitBran origin/$gitBran
-git checkout -f $gitBran
+#git checkout -f $gitBran
 
 echo "start pull--"
 git pull

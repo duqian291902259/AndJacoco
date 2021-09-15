@@ -153,7 +153,7 @@ public class CodeCoverageManager {
                 RequestBody body = new MultipartBody.Builder()
                         .setType(MultipartBody.FORM)
                         .addFormDataPart("file", filename, fileBody)
-                        .addFormDataPart("appName", "cc-android")
+                        .addFormDataPart("appName", "android")
                         .addFormDataPart("versionCode", "3.8.1")
                         .build();
 
