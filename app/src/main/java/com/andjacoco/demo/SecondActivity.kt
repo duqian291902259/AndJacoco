@@ -15,8 +15,8 @@ class SecondActivity : BaseActivity() {
             Log.i("tag", "log")
         })
         SecondHello().sayHello()
-//        ThirdHello().sayHello()
-        FourthHello().sayHello()
+        FourthHello().sayHello2()
+        FourthHello().sayHello3()
     }
 
     fun secondTest() {

@@ -20,6 +20,6 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        CCJacocoHelper.INSTANCE.generateEcFile(getApplicationContext(), true);
+        //CCJacocoHelper.INSTANCE.generateEcFile(getApplicationContext(), true);
     }
 }

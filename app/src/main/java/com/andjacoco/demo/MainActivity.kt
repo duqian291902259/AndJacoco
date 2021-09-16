@@ -14,6 +14,7 @@ class MainActivity : BaseActivity() {
 
         tv.setOnClickListener {
             startActivity(Intent(this, SecondActivity::class.java))
+            Hello.Toast(this@MainActivity,"toast")
         }
 
         Hello.hello(false)
