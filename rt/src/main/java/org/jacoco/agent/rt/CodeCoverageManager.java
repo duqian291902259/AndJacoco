@@ -1,3 +1,4 @@
+/*
 package org.jacoco.agent.rt;
 
 import android.content.Context;
@@ -24,12 +25,14 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
+*/
 /**
  * FileName: CodeCoverageManager
  * Author: zhihao.wu@ttpai.cn
  * Date: 2020/9/16
  * Description: 代码覆盖工具 jacoco，运行时
- */
+ *//*
+
 public class CodeCoverageManager {
     private static CodeCoverageManager sInstance = new CodeCoverageManager();
     //private static String URL_HOST = "http://10.10.17.105:8080";//内网 服务器地址
@@ -86,9 +89,11 @@ public class CodeCoverageManager {
     private CodeCoverageManager() {
     }
 
-    /**
+    */
+/**
      * 生成executionData
-     */
+     *//*
+
     private void writeToFile() {
         if (filePath == null) return;
         OutputStream out = null;
@@ -204,3 +209,4 @@ public class CodeCoverageManager {
         return client;
     }
 }
+*/

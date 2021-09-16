@@ -3,10 +3,10 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 //代码覆盖配置
-apply from: 'jacoco.gradle'
-/*
+//apply from: 'jacoco.gradle'
+
 //apply plugin: 'com.ttp.and_jacoco'
-//apply plugin: 'site.duqian.jacoco'
+apply plugin: 'site.duqian.jacoco'
 jacocoCoverageConfig {
     jacocoEnable true //开关
     branchName 'main'//要对比的分支名
@@ -27,7 +27,6 @@ jacocoCoverageConfig {
         return false
     }
 }
-*/
 
 android {
     compileSdkVersion 29
@@ -92,10 +91,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    /*implementation project(path: ':rt')
+    implementation project(path: ':rt')
     implementation('org.jacoco:org.jacoco.report:0.8.7') {
         exclude group: 'org.jacoco', module: 'org.jacoco.core'
-    }*/
+    }
 
     //debugImplementation "com.github.ttpai.AndJacoco:rt:0.0.6"
     //releaseImplementation "com.github.ttpai.AndJacoco:rt-no-op:0.0.6"

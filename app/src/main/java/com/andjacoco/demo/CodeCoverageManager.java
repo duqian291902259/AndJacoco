@@ -5,10 +5,10 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
-/*import org.jacoco.agent.rt.IAgent;
+import org.jacoco.agent.rt.IAgent;
 import org.jacoco.agent.rt.RT;
 import java.io.FileOutputStream;
-import java.io.OutputStream;*/
+import java.io.OutputStream;
 
 import java.io.Closeable;
 import java.io.File;
@@ -91,7 +91,7 @@ public class CodeCoverageManager {
      * 生成executionData
      */
     private void writeToFile() {
-        /*if (filePath == null) return;
+        if (filePath == null) return;
         OutputStream out = null;
         try {
             out = new FileOutputStream(filePath, true);
@@ -103,7 +103,7 @@ public class CodeCoverageManager {
             Log.e(TAG, " generateCoverageFile Exception:" + e.toString());
         } finally {
             close(out);
-        }*/
+        }
     }
 
     private void close(Closeable out) {
