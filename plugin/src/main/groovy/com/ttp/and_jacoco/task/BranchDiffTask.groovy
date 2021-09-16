@@ -18,7 +18,7 @@ class BranchDiffTask extends DefaultTask {
     @TaskAction
     def getDiffClass() {
         println "downloadEcData start local dq"
-        //downloadEcData()
+        downloadEcData()
         println "downloadEcData end"
 
         //生成差异报告
@@ -54,7 +54,8 @@ class BranchDiffTask extends DefaultTask {
 
         println("diffFiles size=" + diffFiles.size())
         if (diffFiles.size() <= 0) {
-            diffFiles = getAllFileList()
+            return
+            //diffFiles = getAllFileList()
         }
         println("diffFiles2 size=" + diffFiles.size())
 
