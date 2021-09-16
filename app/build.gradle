@@ -13,12 +13,6 @@ jacocoCoverageConfig {
     sourceDirectories = getAllJavaDir() //源码路径
     classDirectories = ["${rootProject.projectDir.absolutePath}/app/classes"] //classes 路径
 
-    //class文件路径
-    /*classDirectories = [
-            "$buildDir/intermediates/javac/debug/classes",
-            "$buildDir/tmp/kotlin-classes/debug",
-    ]*/
-
     gitPushShell = "${project.projectDir}/shell/gitPushShell.sh" //提交git 命令
     copyClassShell = "${project.projectDir}/shell/pullDiffClass.sh" //copy classes 命令
     includes = ['com.andjacoco.demo'] //要 包含的class 包名
