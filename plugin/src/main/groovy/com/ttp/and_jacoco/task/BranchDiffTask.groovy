@@ -53,6 +53,11 @@ class BranchDiffTask extends DefaultTask {
         List<String> diffFiles = getDiffFiles(diff)
 
         println("diffFiles size=" + diffFiles.size())
+        if (diffFiles.size() <= 0) {
+            diffFiles = getAllFileList()
+        }
+        println("diffFiles2 size=" + diffFiles.size())
+
         writerDiffToFile(diffFiles)
 
         //两个分支差异文件的目录
@@ -103,10 +108,9 @@ class BranchDiffTask extends DefaultTask {
     }
 
     def deleteOtherFile(List<String> diffFiles, String dir) {
-
         readFiles(dir, {
             String path = ((File) it).getAbsolutePath().replace(dir, "app")
-            //path= app/classes/com/example/jacoco_plugin/MyApp.class
+            //path= app/classes/com/andjacoco/demo/MyApp.class
             return diffFiles.contains(path)
         })
     }
@@ -190,7 +194,6 @@ class BranchDiffTask extends DefaultTask {
 
     }
 
-
     List<String> readIdList(File file) {
         List<String> list = new ArrayList<>();
         try {
@@ -205,6 +208,17 @@ class BranchDiffTask extends DefaultTask {
             e.printStackTrace();
         }
         return list;
+    }
+
+    List<String> getAllFileList() {
+        List<String> diffFiles = new ArrayList<>()
+        diffFiles.add("app/classes/com/andjacoco/demo/MyApp.class")
+        diffFiles.add("app/classes/com/andjacoco/demo/BaseActivity.class")
+        diffFiles.add("app/classes/com/andjacoco/demo/FourthHello.class")
+        diffFiles.add("app/classes/com/andjacoco/demo/MainActivity.class")
+        diffFiles.add("app/classes/com/andjacoco/demo/SecondActivity.class")
+        //diffFiles.add("app/src/main/java/com/andjacoco/demo/SecondActivity.java")
+        return diffFiles
     }
 
     List<String> getDiffFiles(String diff) {
