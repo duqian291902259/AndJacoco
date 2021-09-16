@@ -1,0 +1,49 @@
+app/classes/com/andjacoco/demo/BaseActivity.class
+app/classes/com/andjacoco/demo/CodeCoverageManager$1.class
+app/classes/com/andjacoco/demo/CodeCoverageManager.class
+app/classes/com/andjacoco/demo/FourthHello.class
+app/classes/com/andjacoco/demo/JacocoHelper.class
+app/classes/com/andjacoco/demo/MainActivity$onCreate$1.class
+app/classes/com/andjacoco/demo/MainActivity.class
+app/classes/com/andjacoco/demo/MyApp.class
+app/classes/com/andjacoco/demo/SecondActivity.class
+app/classes/com/andjacoco/demo/UploadResult.class
+app/classes/com/andjacoco/demo/thread/CcThreadPoolExecutor.class
+app/classes/com/andjacoco/demo/thread/SimpleSafetyTask.class
+app/classes/com/andjacoco/demo/thread/ThreadUtil.class
+app/jacoco.gradle
+app/src/main/java/com/andjacoco/demo/BaseActivity.java
+app/src/main/java/com/andjacoco/demo/CodeCoverageManager.java
+app/src/main/java/com/andjacoco/demo/FourthHello.java
+app/src/main/java/com/andjacoco/demo/JacocoHelper.kt
+app/src/main/java/com/andjacoco/demo/MainActivity.kt
+app/src/main/java/com/andjacoco/demo/MyApp.java
+app/src/main/java/com/andjacoco/demo/SecondActivity.kt
+app/src/main/java/com/andjacoco/demo/UploadResult.java
+app/src/main/java/com/andjacoco/demo/thread/CcThreadPoolExecutor.java
+app/src/main/java/com/andjacoco/demo/thread/SimpleSafetyTask.java
+app/src/main/java/com/andjacoco/demo/thread/ThreadUtil.java
+plugin/src/main/groovy/com/ttp/and_jacoco/task/BranchDiffTask.groovy
+plugin/src/main/java/com/ttp/and_jacoco/report/ReportGenerator.java
+rt/src/main/java/org/jacoco/agent/rt/CodeCoverageManager.java
+
+
+jacoco 执行git命令 local dq
+GitBashPath:C:\Program Files\Git\bin exist:true
+GitBashPath:C:\Program Files\Git\git-bash.exe exist:true
+cmds=[C:\Program Files\Git\git-bash.exe, D:\DusanAndroid\AndJacoco\app/shell/gitPushShell.sh, jacoco auto commit]
+
+
+
+getDiffFiles include app/classes/com/andjacoco/demo/thread/ThreadUtil.class
+diffFiles size=13
+diffFiles2 size=13
+writerDiffToFile size=13 to >D:\DusanAndroid\AndJacoco\app\build/outputs/diff/diffFiles.txt
+
+
+//两个分支差异文件的目录
+def currentDir = "${project.rootDir.parentFile}/temp/${currentName}/app"
+def branchDir = "${project.rootDir.parentFile}/temp/${jacocoExtension.branchName}/app"
+
+cmds=[C:\Program Files\Git\git-bash.exe, D:\DusanAndroid\AndJacoco\app/shell/pullDiffClass.sh, main, D:\DusanAndroid\AndJacoco, D:\DusanAndroid/temp/main/app]
+copyClassShell succ :

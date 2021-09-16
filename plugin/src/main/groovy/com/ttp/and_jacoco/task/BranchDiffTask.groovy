@@ -61,7 +61,7 @@ class BranchDiffTask extends DefaultTask {
 
         writerDiffToFile(diffFiles)
 
-        //两个分支差异文件的目录
+        //todo-dq 两个分支差异文件的目录，名称
         def currentDir = "${project.rootDir.parentFile}/temp/${currentName}/app"
         def branchDir = "${project.rootDir.parentFile}/temp/${jacocoExtension.branchName}/app"
 

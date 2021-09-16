@@ -62,6 +62,7 @@ class JacocoTransform extends Transform {
 
         if (!dirInputs.isEmpty() || !jarInputs.isEmpty()) {
             if (jacocoExtension.jacocoEnable) {
+                println("jacoco transform")
                 //copy class到 app/classes
                 copy(transformInvocation, dirInputs, jarInputs, jacocoExtension.includes)
                 //提交classes 到git
@@ -248,7 +249,7 @@ class JacocoTransform extends Transform {
             return fileInputName
         }
         File parentFile = locate.getParentFile();
-        if (parentFile==null) {
+        if (parentFile == null) {
             return ""
         }
         final String parentDirPath = fileInput.getParentFile().getAbsolutePath()
