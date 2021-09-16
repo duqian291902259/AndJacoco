@@ -18,7 +18,7 @@ class BranchDiffTask extends DefaultTask {
     @TaskAction
     def getDiffClass() {
         println "downloadEcData start local dq"
-        downloadEcData()
+        //downloadEcData()
         println "downloadEcData end"
 
         //生成差异报告
@@ -217,7 +217,6 @@ class BranchDiffTask extends DefaultTask {
         diffFiles.add("app/classes/com/andjacoco/demo/FourthHello.class")
         diffFiles.add("app/classes/com/andjacoco/demo/MainActivity.class")
         diffFiles.add("app/classes/com/andjacoco/demo/SecondActivity.class")
-        //diffFiles.add("app/src/main/java/com/andjacoco/demo/SecondActivity.java")
         return diffFiles
     }
 
@@ -236,9 +235,11 @@ class BranchDiffTask extends DefaultTask {
                         boolean exclude = jacocoExtension.excludeClass.call(it)
                         if (!exclude) {
                             diffFiles.add(it)
+                            println("getDiffFiles include $it")
                         }
                     } else {
                         diffFiles.add(it)
+                        println("getDiffFiles include2 $it")
                     }
                 }
             }

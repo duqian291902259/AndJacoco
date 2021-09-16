@@ -1,21 +1,22 @@
-package org.jacoco.agent.rt;
+package com.andjacoco.demo;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
+/*import org.jacoco.agent.rt.IAgent;
+import org.jacoco.agent.rt.RT;
+import java.io.FileOutputStream;
+import java.io.OutputStream;*/
+
 import java.io.Closeable;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.Arrays;
-import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -90,7 +91,7 @@ public class CodeCoverageManager {
      * 生成executionData
      */
     private void writeToFile() {
-        if (filePath == null) return;
+        /*if (filePath == null) return;
         OutputStream out = null;
         try {
             out = new FileOutputStream(filePath, true);
@@ -102,7 +103,7 @@ public class CodeCoverageManager {
             Log.e(TAG, " generateCoverageFile Exception:" + e.toString());
         } finally {
             close(out);
-        }
+        }*/
     }
 
     private void close(Closeable out) {
@@ -123,7 +124,7 @@ public class CodeCoverageManager {
             @Override
             public void run() {
                 super.run();
-                Log.d(TAG, "开始上传 " + Thread.currentThread());
+                Log.d(TAG, "开始上传 " + filePath + ",thread=" + Thread.currentThread());
                 try {
                     syncUploadFiles();
                 } catch (IOException e) {

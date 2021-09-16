@@ -1,10 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-//apply plugin: 'com.ttp.and_jacoco'
-apply plugin: 'site.duqian.jacoco'
 
 //代码覆盖配置
+apply from: 'jacoco.gradle'
+/*
+//apply plugin: 'com.ttp.and_jacoco'
+//apply plugin: 'site.duqian.jacoco'
 jacocoCoverageConfig {
     jacocoEnable true //开关
     branchName 'main'//要对比的分支名
@@ -25,6 +27,7 @@ jacocoCoverageConfig {
         return false
     }
 }
+*/
 
 android {
     compileSdkVersion 29
@@ -49,13 +52,14 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            buildConfigField "String", "host", "\"${jacocoCoverageConfig.host}\""
+            //buildConfigField "String", "host", "\"${jacocoCoverageConfig.host}\""
 
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
         debug{
-            buildConfigField "String", "host", "\"${jacocoCoverageConfig.host}\""
+            testCoverageEnabled true
+            //buildConfigField "String", "host", "\"${jacocoCoverageConfig.host}\""
         }
     }
 }
@@ -88,12 +92,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation project(path: ':rt')
-    //implementation project(path: ':jacoco-core')//Type org.jacoco.core.JaCoCo is defined multiple times
-
+    /*implementation project(path: ':rt')
     implementation('org.jacoco:org.jacoco.report:0.8.7') {
         exclude group: 'org.jacoco', module: 'org.jacoco.core'
-    }
+    }*/
 
     //debugImplementation "com.github.ttpai.AndJacoco:rt:0.0.6"
     //releaseImplementation "com.github.ttpai.AndJacoco:rt-no-op:0.0.6"

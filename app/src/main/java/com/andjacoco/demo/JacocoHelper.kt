@@ -14,7 +14,7 @@ import java.io.OutputStream
  * @author n20241 Created by 杜小菜 on 2021/9/8 - 11:55 . E-mail: duqian2010@gmail.com
  */
 object JacocoHelper {
-    private const val TAG = "CCJacocoHelper"
+    private const val TAG = "JacocoHelper"
 
     //ec文件的路径
     private val DEFAULT_COVERAGE_ROOT_DIR =
@@ -30,7 +30,7 @@ object JacocoHelper {
         var out: OutputStream? = null
         //todo-dq 按照时间戳命名?
         //val fileName = "jacoco_test_${System.currentTimeMillis()}.ec"
-        val fileName = "jacoco_test.ec"
+        val fileName = "test_android_jacoco.ec"
         var rootDir = context.externalCacheDir?.absolutePath + File.separator+"jacoco/"
         if (TextUtils.isEmpty(rootDir)) {
             rootDir = DEFAULT_COVERAGE_ROOT_DIR;

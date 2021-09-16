@@ -2,8 +2,6 @@ package com.andjacoco.demo;
 
 import android.app.Application;
 
-import org.jacoco.agent.rt.CodeCoverageManager;
-
 public class MyApp extends Application {
     public static Application app;
 
@@ -12,7 +10,7 @@ public class MyApp extends Application {
         super.onCreate();
         app = this;
 
-        CodeCoverageManager.init(app, BuildConfig.host);//内网 服务器地址);
+        CodeCoverageManager.init(app, "http://192.168.56.1:8090");
         CodeCoverageManager.uploadData();
     }
 
