@@ -10,11 +10,11 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Hello.Toast(this, "hello132")
+        Hello.Toast(this, "hello1322343")
 
         tv.setOnClickListener {
             startActivity(Intent(this, SecondActivity::class.java))
-            Hello.Toast(this@MainActivity,"toast")
+            Hello.Toast(this@MainActivity,"toast234523")
         }
 
         Hello.hello(false)

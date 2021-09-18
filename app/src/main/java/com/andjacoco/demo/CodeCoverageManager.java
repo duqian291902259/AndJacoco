@@ -62,7 +62,7 @@ public class CodeCoverageManager {
         filePath = dirPath + "test_android_jacoco.ec";
 
         File f = new File(filePath);
-        Log.d(TAG, filePath + " canRead=" + f.canRead() + " canWrite=" + f.canWrite() + ",size=" + f.length() + "exist=" + f.exists());
+        Log.d(TAG, filePath + " 77canRead=" + f.canRead() + " canWrite=" + f.canWrite() + ",size=" + f.length() + "exist=" + f.exists());
     }
 
     public static void generateCoverageFile() {

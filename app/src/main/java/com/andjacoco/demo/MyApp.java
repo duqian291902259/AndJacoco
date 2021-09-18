@@ -1,6 +1,7 @@
 package com.andjacoco.demo;
 
 import android.app.Application;
+import android.util.Log;
 
 public class MyApp extends Application {
     public static Application app;
@@ -9,6 +10,7 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
         app = this;
+        Log.d("TAG", "MyApp onCreate");
 
         CodeCoverageManager.init(app, "http://192.168.56.1:8090");
         CodeCoverageManager.uploadData();
