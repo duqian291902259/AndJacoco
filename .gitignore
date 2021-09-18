@@ -87,6 +87,4 @@ lint/tmp/
 /app/build/
 /jacoco-core/build/
 
-repo
 repo/
-/repo/*
