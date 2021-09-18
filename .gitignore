@@ -88,3 +88,6 @@ lint/tmp/
 /jacoco-core/build/
 
 repo/
+.idea/
+.DS_Store
+local.properties
